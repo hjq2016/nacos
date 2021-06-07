@@ -16,25 +16,25 @@
   -->
 
 <configuration>
-    
+
     <springProperty scope="context" name="logPath" source="nacos.logs.path" defaultValue="${user.home}/nacos/logs"/>
-    
+
     <property name="LOG_HOME" value="${logPath}"/>
-    
+
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    
+
     <include resource="META-INF/logback/nacos-included.xml"/>
     <include optional="true" resource="META-INF/logback/config-included.xml"/>
     <include optional="true" resource="META-INF/logback/naming-included.xml"/>
     <include optional="true" resource="META-INF/logback/.xml"/>
-    
+
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="rootFile"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/nacos.log</file>
@@ -51,7 +51,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="core-auth"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/core-auth.log</file>
@@ -68,7 +68,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="protocol-raft"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/protocol-raft.log</file>
@@ -85,7 +85,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="remote-core"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/remote-core.log</file>
@@ -102,7 +102,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="remote-digest"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/remote-digest.log</file>
@@ -119,7 +119,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="remote-push"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/remote-push.log</file>
@@ -136,7 +136,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <!--TPS control -->
     <appender name="tps-control"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -170,7 +170,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="tps-control-digest"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/tps-control-digest.log</file>
@@ -187,8 +187,8 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
-    
+
+
     <appender name="protocol-distro"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/protocol-distro.log</file>
@@ -205,7 +205,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="nacos-cluster"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/nacos-cluster.log</file>
@@ -222,7 +222,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <appender name="alipay-jraft"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/alipay-jraft.log</file>
@@ -239,114 +239,115 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    
+
     <root>
         <level value="INFO"/>
-        <appender-ref ref="rootFile"/>
+<!--        <appender-ref ref="rootFile"/>-->
+        <appender-ref ref="CONSOLE"/>
     </root>
-    
-    <logger name="com.alibaba.nacos.core.auth" additivity="false">
-        <level value="DEBUG"/>
-        <appender-ref ref="core-auth"/>
-    </logger>
-    
-    <logger name="com.alibaba.nacos.core.remote" additivity="false">
-        <level value="DEBUG"/>
-        <appender-ref ref="remote-core"/>
-    </logger>
-    
-    <logger name="com.alibaba.nacos.core.remote.push" additivity="false">
-        <level value="DEBUG"/>
-        <appender-ref ref="remote-push"/>
-    </logger>
-    
-    <!-- TPS Control-->
-    <logger name="com.alibaba.nacos.core.remote.control.digest" additivity="false">
-        <level value="DEBUG"/>
-        <appender-ref ref="tps-control-digest"/>
-    </logger>
-    <logger name="com.alibaba.nacos.core.remote.control.detail" additivity="false">
-        <level value="DEBUG"/>
-        <appender-ref ref="tps-control-detail"/>
-    </logger>
-    
-    <logger name="com.alibaba.nacos.core.remote.control" additivity="false">
-        <level value="DEBUG"/>
-        <appender-ref ref="tps-control"/>
-    </logger>
-    
-    
+
+<!--    <logger name="com.alibaba.nacos.core.auth" additivity="false">-->
+<!--        <level value="DEBUG"/>-->
+<!--        <appender-ref ref="core-auth"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.core.remote" additivity="false">-->
+<!--        <level value="DEBUG"/>-->
+<!--        <appender-ref ref="remote-core"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.core.remote.push" additivity="false">-->
+<!--        <level value="DEBUG"/>-->
+<!--        <appender-ref ref="remote-push"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    &lt;!&ndash; TPS Control&ndash;&gt;-->
+<!--    <logger name="com.alibaba.nacos.core.remote.control.digest" additivity="false">-->
+<!--        <level value="DEBUG"/>-->
+<!--        <appender-ref ref="tps-control-digest"/>-->
+<!--    </logger>-->
+<!--    <logger name="com.alibaba.nacos.core.remote.control.detail" additivity="false">-->
+<!--        <level value="DEBUG"/>-->
+<!--        <appender-ref ref="tps-control-detail"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.core.remote.control" additivity="false">-->
+<!--        <level value="DEBUG"/>-->
+<!--        <appender-ref ref="tps-control"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    -->
     <logger name="com.alibaba.nacos.core.remote.digest" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="remote-digest"/>
     </logger>
-    
+<!--    -->
     <logger name="com.alibaba.nacos.core.protocol.raft" additivity="false">
         <level value="INFO"/>
         <appender-ref ref="protocol-raft"/>
     </logger>
-    
+<!--    -->
     <logger name="com.alipay.sofa.jraft" additivity="false">
         <level value="INFO"/>
         <appender-ref ref="alipay-jraft"/>
     </logger>
-    
-    <logger name="com.alibaba.nacos.core.protocol.distro" additivity="false">
-        <level value="INFO"/>
-        <appender-ref ref="protocol-distro"/>
-    </logger>
-    
-    <logger name="com.alibaba.nacos.core.cluster" additivity="false">
-        <level value="INFO"/>
-        <appender-ref ref="nacos-cluster"/>
-    </logger>
-    
-    <springProfile name="standalone">
-        
-        <logger name="org.springframework">
-            <appender-ref ref="CONSOLE"/>
-            <level value="INFO"/>
-        </logger>
-        
-        <logger name="org.apache.catalina.startup.DigesterFactory">
-            <appender-ref ref="CONSOLE"/>
-            <level value="INFO"/>
-        </logger>
-        
-        <logger name="org.apache.catalina.util.LifecycleBase">
-            <appender-ref ref="CONSOLE"/>
-            <level value="ERROR"/>
-        </logger>
-        
-        <logger name="org.apache.coyote.http11.Http11NioProtocol">
-            <appender-ref ref="CONSOLE"/>
-            <level value="WARN"/>
-        </logger>
-        
-        <logger name="org.apache.tomcat.util.net.NioSelectorPool">
-            <appender-ref ref="CONSOLE"/>
-            <level value="WARN"/>
-        </logger>
-    
-    </springProfile>
-    
-    <logger name="com.alibaba.nacos.core.listener.StartingApplicationListener">
-        <appender-ref ref="CONSOLE"/>
-        <level value="INFO"/>
-    </logger>
-    
-    <logger name="com.alibaba.nacos.common.notify.NotifyCenter">
-        <appender-ref ref="CONSOLE"/>
-        <level value="INFO"/>
-    </logger>
-    
-    <logger name="com.alibaba.nacos.sys.file.WatchFileCenter">
-        <appender-ref ref="CONSOLE"/>
-        <level value="INFO"/>
-    </logger>
-    
-    <logger name="com.alibaba.nacos.common.executor.ThreadPoolManager">
-        <appender-ref ref="CONSOLE"/>
-        <level value="INFO"/>
-    </logger>
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.core.protocol.distro" additivity="false">-->
+<!--        <level value="INFO"/>-->
+<!--        <appender-ref ref="protocol-distro"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.core.cluster" additivity="false">-->
+<!--        <level value="INFO"/>-->
+<!--        <appender-ref ref="nacos-cluster"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <springProfile name="standalone">-->
+<!--        -->
+<!--        <logger name="org.springframework">-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <level value="INFO"/>-->
+<!--        </logger>-->
+<!--        -->
+<!--        <logger name="org.apache.catalina.startup.DigesterFactory">-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <level value="INFO"/>-->
+<!--        </logger>-->
+<!--        -->
+<!--        <logger name="org.apache.catalina.util.LifecycleBase">-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <level value="ERROR"/>-->
+<!--        </logger>-->
+<!--        -->
+<!--        <logger name="org.apache.coyote.http11.Http11NioProtocol">-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <level value="WARN"/>-->
+<!--        </logger>-->
+<!--        -->
+<!--        <logger name="org.apache.tomcat.util.net.NioSelectorPool">-->
+<!--            <appender-ref ref="CONSOLE"/>-->
+<!--            <level value="WARN"/>-->
+<!--        </logger>-->
+<!--    -->
+<!--    </springProfile>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.core.listener.StartingApplicationListener">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--        <level value="INFO"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.common.notify.NotifyCenter">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--        <level value="INFO"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.sys.file.WatchFileCenter">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--        <level value="INFO"/>-->
+<!--    </logger>-->
+<!--    -->
+<!--    <logger name="com.alibaba.nacos.common.executor.ThreadPoolManager">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--        <level value="INFO"/>-->
+<!--    </logger>-->
 </configuration>
